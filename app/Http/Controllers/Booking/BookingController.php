@@ -46,12 +46,12 @@ class BookingController
     {
         $booking = Booking::findOrFail($id);
 
-        // Pastikan hanya pemilik booking yang bisa mengakses
+        
         if ($booking->user_id != Auth::id()) {
             abort(403);
         }
 
-        // Ambil snap token dari booking
+        
         $snapToken = $booking->midtrans_order_id;
 
         return view('booking.payment', [
