@@ -118,6 +118,7 @@ USER booking-ps.bellukstudio.my.id
 # Configure git for the application user as well
 RUN git config --global --add safe.directory /var/www/booking-ps.bellukstudio.my.id
 
+RUN npm run ci
 # Install dependencies
 RUN composer install --optimize-autoloader --no-dev --no-interaction
 
