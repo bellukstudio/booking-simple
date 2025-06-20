@@ -95,6 +95,7 @@ COPY --chown=booking-ps.bellukstudio.my.id:booking-ps.bellukstudio.my.id . .
 
 # Remove any existing vendor/node_modules to avoid permission issues
 RUN rm -rf vendor
+RUN rm -rf node_modules
 # Fix git ownership issue by configuring safe directory as root
 RUN git config --global --add safe.directory /var/www/booking-ps.bellukstudio.my.id
 
@@ -118,8 +119,8 @@ USER booking-ps.bellukstudio.my.id
 # Configure git for the application user as well
 RUN git config --global --add safe.directory /var/www/booking-ps.bellukstudio.my.id
 
-RUN npm run ci
 # Install dependencies
+RUN npm ci
 RUN composer install --optimize-autoloader --no-dev --no-interaction
 
 # Install NPM dependencies and build assets
