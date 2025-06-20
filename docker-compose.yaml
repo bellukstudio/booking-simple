@@ -15,7 +15,7 @@ services:
     volumes:
       - ./:/var/www/booking-ps.bellukstudio.my.id
       - ./docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini
-      - booking-ps_storage:/var/www/booking-ps.bellukstudio.my.id/storage
+      - bookingps_storage:/var/www/booking-ps.bellukstudio.my.id/storage
       - ./.env:/var/www/booking-ps.bellukstudio.my.id/.env
     environment:
       - PHP_IDE_CONFIG=serverName=booking-ps.bellukstudio.my.id
