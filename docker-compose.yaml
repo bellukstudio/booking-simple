@@ -1,0 +1,32 @@
+
+services:
+  bookingps_app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+      args:
+        USER_ID: ${USER_ID:-1000}
+        GROUP_ID: ${GROUP_ID:-1000}
+    container_name: bookingps_app
+    restart: unless-stopped
+    ports:
+      - 9002:9000
+    working_dir: /var/www/booking-ps.bellukstudio.my.id
+    volumes:
+      - ./:/var/www/booking-ps.bellukstudio.my.id
+      - ./docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini
+      - booking-ps_storage:/var/www/booking-ps.bellukstudio.my.id/storage
+      - ./.env:/var/www/booking-ps.bellukstudio.my.id/.env
+    environment:
+      - PHP_IDE_CONFIG=serverName=booking-ps.bellukstudio.my.id
+    networks:
+      - bellukstudio_network
+
+networks:
+  bellukstudio_network:
+    external: true
+
+# Volumes
+volumes:
+  bookingps_storage:
+    driver: local
