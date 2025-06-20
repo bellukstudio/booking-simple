@@ -6,8 +6,6 @@ help: ## Show this help message
 	@echo 'Targets:'
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-publish-livewire:
-    docker compose exec bookingps_app php artisan livewire:publish --assets
 
 build: ## Build PenjurianDemo containers
 	docker compose build --no-cache
@@ -58,3 +56,6 @@ key-generate: ## Generate application key
 
 storage-link: ## Create storage link
 	docker compose exec bookingps_app php artisan storage:link
+
+publish-livewire: ## Publish Livewire assets
+	docker compose exec bookingps_app php artisan livewire:publish --assets
