@@ -121,8 +121,8 @@ RUN git config --global --add safe.directory /var/www/booking-ps.bellukstudio.my
 
 # Install dependencies
 RUN npm ci
+RUN npm run build
 RUN composer install --optimize-autoloader --no-dev --no-interaction
-
 # Install NPM dependencies and build assets
 # RUN npm ci --only=production && npm run build && npm cache clean --force
 
