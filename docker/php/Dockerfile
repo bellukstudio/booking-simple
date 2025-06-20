@@ -112,7 +112,7 @@ RUN chown -R booking-ps.bellukstudio.my.id:booking-ps.bellukstudio.my.id /var/ww
 RUN chown -R booking-ps.bellukstudio.my.id:booking-ps.bellukstudio.my.id /var/www/booking-ps.bellukstudio.my.id/bootstrap/cache
 RUN chmod -R 775 /var/www/booking-ps.bellukstudio.my.id/storage
 RUN chmod -R 775 /var/www/booking-ps.bellukstudio.my.id/bootstrap/cache
-
+RUN chmod -R 775 /var/www/siakadponpesdemo.bellukstudio.my.id/public
 # Switch to application user for composer and npm
 USER booking-ps.bellukstudio.my.id
 
